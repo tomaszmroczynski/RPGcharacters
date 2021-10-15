@@ -6,41 +6,54 @@ using System.Threading.Tasks;
 
 namespace RPGchar
 {
-    class Mage : Char
+    public class Mage : Hero
     {
-        public string Name { get; set; }
 
-        public int Level { get; set; }
+         readonly List<WeaponType> weaponHandlingSkills = new List<WeaponType>() { WeaponType.Staff, WeaponType.Wand};
+        // i dont know if it is right way to list items
+ 
 
-        public int Strength { get; set; }
 
-        public int Dexterity { get; set; }
-        public int Inteligence { get; set; }
-        public int Vitality { get; set; }
-        public int Health
+        public override void EquipWeapon(Hero name, WeaponType type)
         {
-            get { return health; }   
-            set { health = vitality*10 + value ; }  
+            Weapon weapon = new Weapon();
+            weapon.Type = type;
+            if (weaponHandlingSkills.Contains(type)) 
+            {
+                name.Equipment.Add(Slot.Weapon, weapon);
+            } 
+            else 
+            {
+                Console.WriteLine($"{this.Name} cant use {type} weapon");
+                    
+            };
+           
+
+
+        }
+        public override void EquipArmor(Hero name, ArmorType type)
+        {
+            Armor armor = new Armor();
+            armor.Type = type;
+  
+            switch (type)
+            {
+                case ArmorType.Cloth:
+                    name.Equipment.Add(Slot.Body, armor);
+                    break;
+                case ArmorType.Leather:
+                    name.Equipment.Add(Slot.Body, armor);
+                    break;
+                case ArmorType.Mail:
+                    name.Equipment.Add(Slot.Body, armor);
+                    break;
+                case ArmorType.Plate:
+                    name.Equipment.Add(Slot.Body, armor);
+                    break;
+
+            }
+            
         }
 
-        public int ArmorRating
-        {
-            get { return armorRating; }
-            set { armorRating = dexterity + strength + value; }
-        }
-
-        public int ElemetalResistance
-        {
-            get { return elementalResistance; }
-            set { elementalResistance   = Inteligence + value; }
-        }
-
-
-
-        public int DamageLevel
-        {
-            get { return damageLevel; }
-            set { elementalResistance = inteligence; }
-        }
     }
 }

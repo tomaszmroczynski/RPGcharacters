@@ -6,41 +6,31 @@ using System.Threading.Tasks;
 
 namespace RPGchar
 {
-    class Ranger
+    public class Ranger : Hero
     {
-        public string Name { get; set; }
 
-        public int Level { get; set; }
 
-        public int Strength { get; set; }
+            
+        private PrimaryAttributes currentAttributes = new PrimaryAttributes { Strength = 1, Intelligence = 3 };
+        private readonly PrimaryAttributes gainedAttributes = new PrimaryAttributes { Strength = 2, Intelligence = 4 };
 
-        public int Dexterity { get; set; }
-        public int Inteligence { get; set; }
-        public int Vitality { get; set; }
-        public int Health
+        public PrimaryAttributes CurrentAttributes { get => currentAttributes; }
+
+        public void LevelUp()
         {
-            get { return health; }
-            set { health = vitality * 10 + value; }
-        }
-
-        public int ArmorRating
-        {
-            get { return armorRating; }
-            set { armorRating = dexterity + strength + value; }
-        }
-
-        public int ElemetalResistance
-        {
-            get { return elementalResistance; }
-            set { elementalResistance = Inteligence + value; }
+            currentAttributes = currentAttributes + gainedAttributes;
         }
 
 
-
-        public int DamageLevel
+        public override void EquipArmor(Hero name, ArmorType type)
         {
-            get { return damageLevel; }
-            set { elementalResistance = inteligence; }
+            throw new NotImplementedException();
+        }
+
+        public override void EquipWeapon(Hero name, WeaponType type)
+        {
+            throw new NotImplementedException();
         }
     }
 }
+

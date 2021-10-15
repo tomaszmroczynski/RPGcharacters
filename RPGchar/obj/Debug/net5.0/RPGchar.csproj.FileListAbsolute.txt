@@ -1,0 +1,16 @@
+C:\Users\tomas\Documents\Programowanie\Projekty Aktualne\Rpg charaters\RPGchar\obj\Debug\net5.0\RPGchar.csproj.AssemblyReference.cache
+C:\Users\tomas\Documents\Programowanie\Projekty Aktualne\Rpg charaters\RPGchar\obj\Debug\net5.0\RPGchar.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tomas\Documents\Programowanie\Projekty Aktualne\Rpg charaters\RPGchar\obj\Debug\net5.0\RPGchar.AssemblyInfoInputs.cache
+C:\Users\tomas\Documents\Programowanie\Projekty Aktualne\Rpg charaters\RPGchar\obj\Debug\net5.0\RPGchar.AssemblyInfo.cs
+C:\Users\tomas\Documents\Programowanie\Projekty Aktualne\Rpg charaters\RPGchar\obj\Debug\net5.0\RPGchar.csproj.CoreCompileInputs.cache
+C:\Users\tomas\Documents\Programowanie\Projekty Aktualne\Rpg charaters\RPGchar\bin\Debug\net5.0\RPGchar.exe
+C:\Users\tomas\Documents\Programowanie\Projekty Aktualne\Rpg charaters\RPGchar\bin\Debug\net5.0\RPGchar.deps.json
+C:\Users\tomas\Documents\Programowanie\Projekty Aktualne\Rpg charaters\RPGchar\bin\Debug\net5.0\RPGchar.runtimeconfig.json
+C:\Users\tomas\Documents\Programowanie\Projekty Aktualne\Rpg charaters\RPGchar\bin\Debug\net5.0\RPGchar.runtimeconfig.dev.json
+C:\Users\tomas\Documents\Programowanie\Projekty Aktualne\Rpg charaters\RPGchar\bin\Debug\net5.0\RPGchar.dll
+C:\Users\tomas\Documents\Programowanie\Projekty Aktualne\Rpg charaters\RPGchar\bin\Debug\net5.0\ref\RPGchar.dll
+C:\Users\tomas\Documents\Programowanie\Projekty Aktualne\Rpg charaters\RPGchar\bin\Debug\net5.0\RPGchar.pdb
+C:\Users\tomas\Documents\Programowanie\Projekty Aktualne\Rpg charaters\RPGchar\obj\Debug\net5.0\RPGchar.dll
+C:\Users\tomas\Documents\Programowanie\Projekty Aktualne\Rpg charaters\RPGchar\obj\Debug\net5.0\ref\RPGchar.dll
+C:\Users\tomas\Documents\Programowanie\Projekty Aktualne\Rpg charaters\RPGchar\obj\Debug\net5.0\RPGchar.pdb
+C:\Users\tomas\Documents\Programowanie\Projekty Aktualne\Rpg charaters\RPGchar\obj\Debug\net5.0\RPGchar.genruntimeconfig.cache
