@@ -8,12 +8,21 @@ namespace RPGchar
 {
     public class Rogue : Hero
     {
-        public override void EquipArmor(Hero name, ArmorType type)
+        private PrimaryAttributes currentAttributes = new PrimaryAttributes { Strength = 2, Intelligence = 1, Dexterity = 6, Vitality = 8 };
+        private readonly PrimaryAttributes gainedAttributes = new PrimaryAttributes { Strength = 1, Intelligence = 1, Dexterity = 4, Vitality = 3 };
+
+        public PrimaryAttributes CurrentAttributes { get => currentAttributes; }
+
+        public override void LevelUp()
+        {
+            currentAttributes = currentAttributes + gainedAttributes;
+        }
+        public override void EquipArmor( ArmorType type)
         {
             throw new NotImplementedException();
         }
 
-        public override void EquipWeapon(Hero name, WeaponType type)
+        public override void EquipWeapon( WeaponType type)
         {
             throw new NotImplementedException();
         }

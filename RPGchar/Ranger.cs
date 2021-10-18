@@ -11,23 +11,23 @@ namespace RPGchar
 
 
             
-        private PrimaryAttributes currentAttributes = new PrimaryAttributes { Strength = 1, Intelligence = 3 };
-        private readonly PrimaryAttributes gainedAttributes = new PrimaryAttributes { Strength = 2, Intelligence = 4 };
+        private PrimaryAttributes currentAttributes = new PrimaryAttributes { Strength = 1, Intelligence = 1 , Dexterity= 7, Vitality = 8 };
+        private readonly PrimaryAttributes gainedAttributes = new PrimaryAttributes { Strength = 1, Intelligence = 1, Dexterity = 5, Vitality= 2 };
 
         public PrimaryAttributes CurrentAttributes { get => currentAttributes; }
 
-        public void LevelUp()
+        public override void LevelUp()
         {
             currentAttributes = currentAttributes + gainedAttributes;
         }
 
 
-        public override void EquipArmor(Hero name, ArmorType type)
+        public override void EquipArmor( ArmorType type)
         {
             throw new NotImplementedException();
         }
 
-        public override void EquipWeapon(Hero name, WeaponType type)
+        public override void EquipWeapon( WeaponType type)
         {
             throw new NotImplementedException();
         }

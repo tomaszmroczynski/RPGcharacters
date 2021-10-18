@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RPGchar
 {
-    public struct PrimaryAttributes
+    public struct PrimaryAttributes 
     {
         public int Strength { get; set; }
         public int Intelligence { get; set; }

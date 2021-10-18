@@ -8,16 +8,19 @@ namespace RPGchar
 {
     public struct SecondaryAttributes
     {
-        public int Strength { get; set; }  //warning hat to be modified
-        public int Intelligence { get; set; } //warning hat to be modified
+        public int Health { get; set; }  
+        public int ArmorRating { get; set; }
 
-        public static SecondaryAttributes operator +(SecondaryAttributes lhs, SecondaryAttributes rhs)
-        {
-            return new SecondaryAttributes
-            {
-                Intelligence = lhs.Intelligence + rhs.Intelligence, //warning hat to be modified
-                Strength = lhs.Strength + rhs.Strength //warning hat to be modified
-            };
-        }
+        public int ElementalResistance { get; set; }
+
+        //public static SecondaryAttributes operator +(PrimaryAttributes lhs, PrimaryAttributes rhs )
+        //{
+        //    return new SecondaryAttributes
+        //    {
+        //        Health = lhs.Vitality + rhs.Vitality *10, 
+        //        ArmorRating = lhs.Strength + rhs.Strength + lhs.Dexterity + rhs.Dexterity, 
+        //        ElementalResistance = lhs.Intelligence + rhs.Intelligence
+        //    };
+        //}
     }
 }
