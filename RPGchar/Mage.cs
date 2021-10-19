@@ -9,13 +9,10 @@ namespace RPGchar
     public class Mage : Hero
     {
 
-        public Mage()
-        {
 
-        }
+        private readonly List<WeaponType> weaponHandlingSkills = new List<WeaponType>() { WeaponType.Staff, WeaponType.Wand};
+        private readonly List<ArmorType> weaponWearingSkills = new List<ArmorType>() { ArmorType.Cloth };
 
-         readonly List<WeaponType> weaponHandlingSkills = new List<WeaponType>() { WeaponType.Staff, WeaponType.Wand};
-        // i dont know if it is right way to list items
 
         public PrimaryAttributes currentAttributes = new PrimaryAttributes { Strength = 1, Intelligence = 8, Dexterity = 1, Vitality = 5 };
         public readonly PrimaryAttributes gainedAttributes = new PrimaryAttributes { Strength = 1, Intelligence = 5, Dexterity = 1, Vitality = 3 };
@@ -32,48 +29,66 @@ namespace RPGchar
             Console.WriteLine($"Dexterity {currentAttributes.Dexterity}");
             Console.WriteLine($"Intelligence {currentAttributes.Intelligence}");
             Console.WriteLine($"Vitality {currentAttributes.Vitality}");
-
         }
 
-        public override void EquipWeapon( WeaponType type) //its wrong hero cant just equip a type of weapon it has to e instance of weapon
+        public override void EquipWeapon(Weapon weapon) 
         {
-            Weapon weapon = new Weapon();
-            weapon.Type = type;
-            if (weaponHandlingSkills.Contains(type)) 
+            if (!weaponHandlingSkills.Contains(weapon.Type))
             {
-                Equipment.Add(Slot.Weapon, weapon);
-                Console.WriteLine($"What great {type} u have equiped ");
-            } 
-            else 
-            {
-                Console.WriteLine($"{Name} can`t use {type} weapon");
-                    
-            };
-           
-
-
-        }
-        public override void EquipArmor( ArmorType type)
-        {
-            Armor armor = new Armor();
-            armor.Type = type;
-  
-            switch (type)
-            {
-                case ArmorType.Cloth:
-                    Equipment.Add(Slot.Body, armor);
-                    break;
-                case ArmorType.Leather:
-                    Equipment.Add(Slot.Body, armor);
-                    break;
-                case ArmorType.Mail:
-                    Equipment.Add(Slot.Body, armor);
-                    break;
-                case ArmorType.Plate:
-                    Equipment.Add(Slot.Body, armor);
-                    break;
+                throw new InvalidWeaponException($"{Name} can`t use {weapon.Name}{weapon.Type} weapon");
 
             }
+            else if (weapon.RequiredLevel > Level)
+            {
+                throw new InvalidWeaponException($"{weapon.Name}{weapon.Type} required level  is too high to use it right now");
+            } else {
+
+                Equipment.Add(Slot.Weapon, weapon);
+                Console.WriteLine($"What great {weapon.Type} u have equiped ");
+            }
+
+     
+
+        }
+        public override void EquipArmor( Armor armor, Slot slot)
+        {
+
+
+            if (!weaponWearingSkills.Contains(armor.Type))
+            {
+                throw new InvalidArmorExeption($"{Name} can`t use {armor.Name} {armor.Type} armor");
+
+            }
+            else if (armor.RequiredLevel > Level)
+            {
+                throw new InvalidWeaponException($"{armor.Name}{armor.Type} required level  is too high to use it right now");
+            }
+            else if (slot == Slot.Weapon)
+            {
+                throw new InvalidOperationException("You cant wear armor in your hands");
+            } 
+            else
+            {
+
+                Equipment.Add(slot, armor); //important to make 
+                Console.WriteLine($"What great {armor.Type} u have equiped ");
+            }
+            //switch (armor.Type)
+            //{
+            //    case ArmorType.Cloth:
+            //        Equipment.Add(Slot.Body, armor);
+            //        break;
+            //    case ArmorType.Leather:
+            //        Equipment.Add(Slot.Body, armor);
+            //        break;
+            //    case ArmorType.Mail:
+            //        Equipment.Add(Slot.Body, armor);
+            //        break;
+            //    case ArmorType.Plate:
+            //        Equipment.Add(Slot.Body, armor);
+            //        break;}
+
+            
             
         }
 

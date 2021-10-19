@@ -22,12 +22,12 @@ namespace RPGchar
         }
 
 
-        public override void EquipArmor( ArmorType type)
+        public override void EquipArmor( Armor armor)
         {
             throw new NotImplementedException();
         }
 
-        public override void EquipWeapon( WeaponType type)
+        public override void EquipWeapon( Weapon weapon)
         {
             throw new NotImplementedException();
         }

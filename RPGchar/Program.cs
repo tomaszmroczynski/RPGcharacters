@@ -11,15 +11,6 @@ namespace RPGchar
 
             
 
-            
-            
-
-            
-            
-
-
-            
-
 
         }
 

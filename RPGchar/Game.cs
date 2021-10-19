@@ -31,6 +31,8 @@ namespace RPGchar
             Console.WriteLine($"You have picked up {hero} ");
             Console.WriteLine($"Welocome {hero.Name} yur actual level is {hero.Level} let the adventure begin");
 
+            hero.EquipWeapon(WeaponType.Staff);
+
             return hero;
         }
 

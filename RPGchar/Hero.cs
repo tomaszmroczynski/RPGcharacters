@@ -15,6 +15,7 @@ namespace RPGchar
             Level = 1;
             Console.WriteLine("Give Your hero a name");
             Name = Console.ReadLine();
+            Equipment = new Dictionary<Slot, Item>();
         }
         private string name;
 
@@ -24,15 +25,17 @@ namespace RPGchar
             set { name = value; }
         }
 
-        
+ 
+
+
 
         public int Level { get; set; }
 
         public Dictionary<Slot,Item> Equipment { get; set; }
 
-        public abstract void EquipWeapon( WeaponType type);
+        public abstract void EquipWeapon( Weapon weapon);
 
-        public abstract void EquipArmor( ArmorType type);
+        public abstract void EquipArmor( Armor armor, Slot slot);
 
         public abstract void LevelUp();
 

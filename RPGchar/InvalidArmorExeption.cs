@@ -6,14 +6,10 @@ using System.Threading.Tasks;
 
 namespace RPGchar
 {
-    public class Weapon : Item
+    public class InvalidArmorExeption : Exception
     {
-        public WeaponType Type { get; set; }
-
-        public WeaponAttributes WeaponAttributes { get; set; }
-
-
-
-
+        public InvalidArmorExeption(string message) : base(message)
+        {
+        }
     }
 }
