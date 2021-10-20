@@ -11,7 +11,7 @@ namespace RPGchar
 
 
         private readonly List<WeaponType> weaponHandlingSkills = new List<WeaponType>() { WeaponType.Staff, WeaponType.Wand};
-        private readonly List<ArmorType> weaponWearingSkills = new List<ArmorType>() { ArmorType.Cloth };
+        private readonly List<ArmourType> weaponWearingSkills = new List<ArmourType>() { ArmourType.Cloth };
 
 
         public PrimaryAttributes currentAttributes = new PrimaryAttributes { Strength = 1, Intelligence = 8, Dexterity = 1, Vitality = 5 };
@@ -50,47 +50,53 @@ namespace RPGchar
      
 
         }
-        public override void EquipArmor( Armor armor, Slot slot)
+        public override void EquipArmour( Armour armour, Slot slot)
         {
 
+            //try
+            //{
+            //     Equipment.Add(slot, armour);  
+            //     Console.WriteLine($"What great {armour.Type} u have equiped ");
+            //}
+            //catch (InvalidArmourExeption ex)
+            //{
 
-            if (!weaponWearingSkills.Contains(armor.Type))
+            //    Console.WriteLine(ex.ToString());
+            //}
+
+            if (!weaponWearingSkills.Contains(armour.Type))
             {
-                throw new InvalidArmorExeption($"{Name} can`t use {armor.Name} {armor.Type} armor");
+                throw new InvalidArmourExeption($"{Name} can`t use {armour.Name} {armour.Type} Armour");
 
             }
-            else if (armor.RequiredLevel > Level)
+            else if (armour.RequiredLevel > Level)
             {
-                throw new InvalidWeaponException($"{armor.Name}{armor.Type} required level  is too high to use it right now");
+                throw new InvalidWeaponException($"{armour.Name}{armour.Type} required level  is too high to use it right now");
             }
             else if (slot == Slot.Weapon)
             {
-                throw new InvalidOperationException("You cant wear armor in your hands");
-            } 
+                throw new InvalidOperationException("You cant wear Armour in your hands");
+            }
             else
             {
 
-                Equipment.Add(slot, armor); //important to make 
-                Console.WriteLine($"What great {armor.Type} u have equiped ");
+                Equipment.Add(slot, armour);
+                Console.WriteLine($"What great {armour.Type} u have equiped ");
             }
-            //switch (armor.Type)
-            //{
-            //    case ArmorType.Cloth:
-            //        Equipment.Add(Slot.Body, armor);
-            //        break;
-            //    case ArmorType.Leather:
-            //        Equipment.Add(Slot.Body, armor);
-            //        break;
-            //    case ArmorType.Mail:
-            //        Equipment.Add(Slot.Body, armor);
-            //        break;
-            //    case ArmorType.Plate:
-            //        Equipment.Add(Slot.Body, armor);
-            //        break;}
 
-            
-            
+
+
+
         }
 
+        public override void SearchChest()
+        {
+            
+            
+
+
+
+            
+        }
     }
 }

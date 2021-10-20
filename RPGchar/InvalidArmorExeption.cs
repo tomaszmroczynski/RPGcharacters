@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace RPGchar
 {
-    public class InvalidArmorExeption : Exception
+    public class InvalidArmourExeption : Exception
     {
-        public InvalidArmorExeption(string message) : base(message)
+        public InvalidArmourExeption(string message) : base(message)
         {
+            
         }
     }
 }

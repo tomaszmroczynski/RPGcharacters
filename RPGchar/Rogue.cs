@@ -17,12 +17,12 @@ namespace RPGchar
         {
             currentAttributes = currentAttributes + gainedAttributes;
         }
-        public override void EquipArmor( ArmorType type)
+        public override void EquipArmour( Armour armour, Slot slot)
         {
             throw new NotImplementedException();
         }
 
-        public override void EquipWeapon( WeaponType type)
+        public override void EquipWeapon( Weapon weapon)
         {
             throw new NotImplementedException();
         }

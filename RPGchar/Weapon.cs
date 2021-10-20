@@ -12,6 +12,8 @@ namespace RPGchar
 
         public WeaponAttributes WeaponAttributes { get; set; }
 
+        
+
 
 
 

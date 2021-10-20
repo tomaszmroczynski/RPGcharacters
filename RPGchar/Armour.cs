@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace RPGchar
 {
-    public enum ArmorType
+    public class Armour : Item
     {
-        Cloth = 0,
-        Leather = 1,
-        Mail = 2,
-        Plate =3,
+        public ArmourType Type { get; set; }
+
+        public PrimaryAttributes Attributes { get; set; }
+
+
     }
 }

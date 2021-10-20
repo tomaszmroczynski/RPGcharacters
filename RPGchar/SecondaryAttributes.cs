@@ -9,7 +9,7 @@ namespace RPGchar
     public struct SecondaryAttributes
     {
         public int Health { get; set; }  
-        public int ArmorRating { get; set; }
+        public int ArmourRating { get; set; }
 
         public int ElementalResistance { get; set; }
 
@@ -17,9 +17,9 @@ namespace RPGchar
         {
             return new SecondaryAttributes
             {
-                Health = lhs.Vitality + rhs.Vitality * 10,
-                ArmorRating = lhs.Strength + rhs.Strength + lhs.Dexterity + rhs.Dexterity,
-                ElementalResistance = lhs.Intelligence + rhs.Intelligence
+                Health =   rhs.Vitality * 10,
+                ArmourRating =  rhs.Strength  + rhs.Dexterity,
+                ElementalResistance =   rhs.Intelligence
             };
         }
     }

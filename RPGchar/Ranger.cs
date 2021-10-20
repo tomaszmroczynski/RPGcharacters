@@ -22,7 +22,7 @@ namespace RPGchar
         }
 
 
-        public override void EquipArmor( Armor armor)
+        public override void EquipArmour( Armour armour, Slot slot)
         {
             throw new NotImplementedException();
         }
