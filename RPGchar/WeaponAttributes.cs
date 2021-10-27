@@ -8,7 +8,7 @@ namespace RPGchar
 {
     public class WeaponAttributes
     {
-        public int Damage { get; set; }
+        public double Damage { get; set; }
 
         public double AttackSpeed { get; set; }
 

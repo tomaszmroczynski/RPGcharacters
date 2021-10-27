@@ -9,7 +9,7 @@ namespace RPGchar
     public enum CharClasses
     {
         Mage,
-        Warior,
+        Warrior,
         Rogue,
         Ranger,
     }

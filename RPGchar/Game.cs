@@ -2,48 +2,98 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace RPGchar
+  
 {
+    
     public class Game
     {
-        public Game()
-        {
-           Hero hero=  NewHero();
 
+
+        public void StartGame(string input)
+        {
+
+            if (input.Equals("yes", StringComparison.InvariantCultureIgnoreCase) || input == "1")
+            {
+                Console.WriteLine("Oh my head.....aahh, you open your eyes");
+                Thread.Sleep(1000);
+            }
+            else if (input.Equals("no", StringComparison.InvariantCultureIgnoreCase) || input == "2")
+            {
+                Console.WriteLine("bye, bye");
+                input = "exit";
+            }
         }
 
-       
-   
 
-        public Hero NewHero()
+
+        public  Hero NewHero(string input)
         {
             var values = Enum.GetValues(typeof(CharClasses));
-            Console.WriteLine("Pick your hero class from list bellow and type it");
+            int idx = 0;
             foreach (var item in values)
             {
-                Console.WriteLine(item);
+                idx++;               
+                Console.WriteLine($"{idx} {item}");
+                Thread.Sleep(1000);
             }
-            string choice = Console.ReadLine();
+            input = Console.ReadLine();
+            return  input == "1" ? new Mage() : input == "2" ? new Warrior() : input == "3" ? new Rogue() : input == "4" ? new Ranger() : default; ;
+        
+        }    
 
-            Hero hero = choice == "Mage" ? new Mage() : choice == "Warrior" ? new Warrior() : choice == "Rogue" ? new Rogue() : choice == "Ranger" ? new Ranger() : default;
+            //var temporaryItems = new List<Item>();
 
-            Console.WriteLine($"You have picked up {hero} ");
-            Console.WriteLine($"Welocome {hero.Name} yur actual level is {hero.Level} let the adventure begin");
+            //temporaryItems.Add(new Weapon()
+            //{
+            //    Name = "Common axe",
+            //    RequiredLevel = 1,
+            //    Slot = Slot.Weapon,
+            //    Type = WeaponType.Axe,
+            //    WeaponAttributes = new WeaponAttributes() { Damage = 7, AttackSpeed = 1.1 }
+            //});
+            //temporaryItems.Add(new Weapon()
+            //{
+            //    Name = "Common bow",
+            //    RequiredLevel = 1,
+            //    Slot = Slot.Weapon,
+            //    Type = WeaponType.Bow,
+            //    WeaponAttributes = new WeaponAttributes() { Damage = 12, AttackSpeed = 0.8 }
+            //});
+            //temporaryItems.Add(new Armour()
+            //{
+            //    Name = "Common plate body Armour",
+            //    RequiredLevel = 1,
+            //    Slot = Slot.Body,
+            //    Type = ArmourType.Plate,
+            //    Attributes = new PrimaryAttributes() { Vitality = 2, Strength = 1 }
+            //});
+            //temporaryItems.Add(new Armour()
+            //{
+            //    Name = "Common cloth head armor",
+            //    RequiredLevel = 1,
+            //    Slot = Slot.Head,
+            //    Type = ArmourType.Cloth,
+            //    Attributes = new PrimaryAttributes() { Vitality = 1, Intelligence = 5 }
+            //});
 
            
 
-            return hero;
+
         }
 
 
-       
-
-        
 
 
 
 
-    }
+
+
+
+
+
+
+    
 }

@@ -20,8 +20,12 @@ namespace RPGchar
             return new PrimaryAttributes
             {
                 Intelligence = lhs.Intelligence + rhs.Intelligence,
-                Strength = lhs.Strength + rhs.Strength
+                Strength = lhs.Strength + rhs.Strength,
+                Dexterity = lhs.Dexterity + rhs.Dexterity,
+                Vitality = lhs.Vitality +rhs.Vitality
             };
         }
+
+
     }
 }

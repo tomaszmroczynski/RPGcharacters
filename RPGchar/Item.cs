@@ -14,6 +14,7 @@ namespace RPGchar
 
         public Slot Slot { get; set; }
 
-        public bool IsEquiped { get; set; }
+        
+
     }
 }

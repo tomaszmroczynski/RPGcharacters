@@ -10,7 +10,7 @@ namespace RPGchar
     {
         public ArmourType Type { get; set; }
 
-        public PrimaryAttributes Attributes { get; set; }
+        public PrimaryAttributes ArmourAttributes { get; set; }
 
 
     }

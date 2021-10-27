@@ -19,7 +19,7 @@ namespace RPGchar
             {
                 Health =   rhs.Vitality * 10,
                 ArmourRating =  rhs.Strength  + rhs.Dexterity,
-                ElementalResistance =   rhs.Intelligence
+                ElementalResistance =   rhs.Intelligence,
             };
         }
     }

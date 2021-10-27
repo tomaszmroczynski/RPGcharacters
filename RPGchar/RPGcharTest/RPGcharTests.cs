@@ -1,3 +1,4 @@
+using RPGchar;
 using System;
 using Xunit;
 
@@ -30,7 +31,7 @@ namespace RPGcharTest
                 RequiredLevel = 1,
                 Slot = Slot.Body,
                 Type = ArmourType.Plate,
-                Attributes = new PrimaryAttributes() { Vitality = 2, Strength = 1 }
+                ArmourAttributes = new PrimaryAttributes() { Vitality = 2, Strength = 1 }
             };
             Armour testClothHead = new Armour()
             {
@@ -38,7 +39,7 @@ namespace RPGcharTest
                 RequiredLevel = 1,
                 Slot = Slot.Head,
                 Type = ArmourType.Cloth,
-                Attributes = new PrimaryAttributes() { Vitality = 1, Intelligence = 5 }
+                ArmourAttributes = new PrimaryAttributes() { Vitality = 1, Intelligence = 5 }
             };
 
         }
