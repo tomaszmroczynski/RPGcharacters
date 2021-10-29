@@ -8,9 +8,15 @@ namespace RPGchar
 {
     public class Rogue : Hero
     {
-        private readonly List<WeaponType> WeaponHandlingSkills = new List<WeaponType>() { WeaponType.Dagger, WeaponType.Sword };
+        public override List<WeaponType> WeaponHandlingSkills()
+        {
+            return new List<WeaponType>() { WeaponType.Dagger, WeaponType.Sword };
+        }
 
-        private readonly List<ArmourType> ArmourWearingSkills = new List<ArmourType>() { ArmourType.Leather, ArmourType.Mail };
+        public override List<ArmourType> ArmourWearingSkills()
+        {
+            return new List<ArmourType>() { ArmourType.Leather, ArmourType.Mail };
+        }
 
         private PrimaryAttributes currentAttributes = new PrimaryAttributes { Strength = 2, Intelligence = 1, Dexterity = 6, Vitality = 8 };
         
@@ -21,20 +27,15 @@ namespace RPGchar
         public override void LevelUp()
         {
             currentAttributes = currentAttributes + gainedAttributes;
+            Console.WriteLine($"Congratulations {Name} You have leveled up, and your actual level is {Level} ");
+            Console.WriteLine("Your updated atributes are:");
+            Console.WriteLine($"Strength {currentAttributes.Strength}");
+            Console.WriteLine($"Dexterity {currentAttributes.Dexterity}");
+            Console.WriteLine($"Intelligence {currentAttributes.Intelligence}");
+            Console.WriteLine($"Vitality {currentAttributes.Vitality}");
         }
 
-        public override void EquipWeapon(Weapon weapon)
-        {
-            if (!WeaponHandlingSkills.Contains(weapon.Type))
-                throw new InvalidWeaponException($"Wrong type of weapon");
-            else if (weapon.RequiredLevel > Level)
-                throw new InvalidWeaponException($"{weapon.Name}{weapon.Type} required level  is too high to use it right now");
-            else
-            {
-                Equipment.Add(Slot.Weapon, weapon);
-                Console.WriteLine($"What great {weapon.Type} u have equiped ");
-            }
-        }
+
 
         public override double CharacterDPS
         {
@@ -62,19 +63,6 @@ namespace RPGchar
             throw new NotImplementedException();
         }
 
-        public override void EquipArmour(Armour armour, Slot slot)
-        {
-            if (!ArmourWearingSkills.Contains(armour.Type))
-                throw new InvalidArmourExeption("wrong armor type for your hero class");
-            else if (armour.RequiredLevel > Level)
-                throw new InvalidArmourExeption("too low character level");
-            else if (slot == Slot.Weapon)
-                throw new InvalidItemException("wrong item slot");
-            else
-            {
-                Equipment.Add(slot, armour);
-                Console.WriteLine($"What great {armour.Type} u have equiped ");
-            }
-        }
+
     }
 }

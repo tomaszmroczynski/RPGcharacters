@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RPGchar
 {
-    public abstract class Hero  
+    public abstract class Hero : IItemHandlingSkills
 
     {
         public Hero()
@@ -80,11 +80,45 @@ namespace RPGchar
         }
         public Dictionary<Slot,Item> Equipment { get; set; }
 
-        public abstract void EquipWeapon(Weapon weapon);
+        public abstract List<WeaponType> WeaponHandlingSkills();
 
-        public abstract void EquipArmour(Armour armour, Slot slot);
+        public virtual void EquipWeapon(Weapon weapon) 
+        {
+            if (!WeaponHandlingSkills().Contains(weapon.Type))
+            {
+                throw new InvalidWeaponException($"Wrong wepon slot");
+            }
+            else if (weapon.RequiredLevel > Level)
+            {
+                throw new InvalidWeaponException($"Too high weapon level");
+            }
+            else
+            {
+                Equipment.Add(Slot.Weapon, weapon);
+                Console.WriteLine($"What great {weapon.Type} u have equiped ");
+            }
+        }
+
+        public abstract List<ArmourType> ArmourWearingSkills();
+
+        public virtual void EquipArmour(Armour armour, Slot slot) {
+            {
+                if (!ArmourWearingSkills().Contains(armour.Type))
+                    throw new InvalidArmourExeption("wrong armor type for your hero class");
+                else if (armour.RequiredLevel > Level)
+                    throw new InvalidArmourExeption("too low character level");
+                else if (slot == Slot.Weapon)
+                    throw new InvalidItemException("wrong item slot");
+                else
+                {
+                    Equipment.Add(slot, armour);
+                    Console.WriteLine($"What great {armour.Type} u have equiped ");
+                }
+            }
+        }
 
         public abstract void LevelUp();
+     
 
         public abstract void SearchChest();
 
