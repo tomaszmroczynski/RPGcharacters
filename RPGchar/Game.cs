@@ -1,17 +1,21 @@
-﻿using System;
+﻿using RPGchar.Heroes;
+using RPGchar.Heroes.Attributes;
+using RPGchar.Heroes.HeroeClasses;
+using RPGchar.Items;
+using RPGchar.Items.Armour;
+using RPGchar.Items.Weapon;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
 
+
 namespace RPGchar
-  
 {
-    
     public class Game
     {
-
-
+ 
         public void StartGame(string input)
         {
 
@@ -29,7 +33,7 @@ namespace RPGchar
 
 
 
-        public  Hero NewHero(string input)
+        public Hero NewHero(string input)
         {
             var values = Enum.GetValues(typeof(CharClasses));
             int idx = 0;
@@ -40,60 +44,51 @@ namespace RPGchar
                 Thread.Sleep(1000);
             }
             input = Console.ReadLine();
-            return  input == "1" ? new Mage() : input == "2" ? new Warrior() : input == "3" ? new Rogue() : input == "4" ? new Ranger() : default; ;
-        
-        }    
-
-            //var temporaryItems = new List<Item>();
-
-            //temporaryItems.Add(new Weapon()
-            //{
-            //    Name = "Common axe",
-            //    RequiredLevel = 1,
-            //    Slot = Slot.Weapon,
-            //    Type = WeaponType.Axe,
-            //    WeaponAttributes = new WeaponAttributes() { Damage = 7, AttackSpeed = 1.1 }
-            //});
-            //temporaryItems.Add(new Weapon()
-            //{
-            //    Name = "Common bow",
-            //    RequiredLevel = 1,
-            //    Slot = Slot.Weapon,
-            //    Type = WeaponType.Bow,
-            //    WeaponAttributes = new WeaponAttributes() { Damage = 12, AttackSpeed = 0.8 }
-            //});
-            //temporaryItems.Add(new Armour()
-            //{
-            //    Name = "Common plate body Armour",
-            //    RequiredLevel = 1,
-            //    Slot = Slot.Body,
-            //    Type = ArmourType.Plate,
-            //    Attributes = new PrimaryAttributes() { Vitality = 2, Strength = 1 }
-            //});
-            //temporaryItems.Add(new Armour()
-            //{
-            //    Name = "Common cloth head armor",
-            //    RequiredLevel = 1,
-            //    Slot = Slot.Head,
-            //    Type = ArmourType.Cloth,
-            //    Attributes = new PrimaryAttributes() { Vitality = 1, Intelligence = 5 }
-            //});
-
-           
-
-
+     
+            return input == "1" ? new Mage() : input == "2" ? new Warrior() : input == "3" ? new Rogue() : input == "4" ? new Ranger() : default; 
         }
 
+        
 
-
-
-
-
-
-
-
-
-
-
-    
+        public List<Item> InventoryChest
+        {
+            get
+            {
+                InventoryChest.Add(new Weapon()
+                {
+                    Name = "Common axe",
+                    RequiredLevel = 1,
+                    Slot = Slot.Weapon,
+                    Type = WeaponType.Axe,
+                    WeaponAttributes = new WeaponAttributes() { Damage = 7, AttackSpeed = 1.1 }
+                });
+                InventoryChest.Add(new Weapon()
+                {
+                    Name = "Common bow",
+                    RequiredLevel = 1,
+                    Slot = Slot.Weapon,
+                    Type = WeaponType.Bow,
+                    WeaponAttributes = new WeaponAttributes() { Damage = 12, AttackSpeed = 0.8 }
+                });
+                InventoryChest.Add(new Armour()
+                {
+                    Name = "Common plate body Armour",
+                    RequiredLevel = 1,
+                    Slot = Slot.Body,
+                    Type = ArmourType.Plate,
+                    ArmourAttributes = new PrimaryAttributes() { Vitality = 2, Strength = 1 }
+                });
+                InventoryChest.Add(new Armour()
+                {
+                    Name = "Common cloth head armor",
+                    RequiredLevel = 1,
+                    Slot = Slot.Head,
+                    Type = ArmourType.Cloth,
+                    ArmourAttributes = new PrimaryAttributes() { Vitality = 1, Intelligence = 5 }
+                });
+                return InventoryChest;
+            }           
+        }
+    }
+  
 }

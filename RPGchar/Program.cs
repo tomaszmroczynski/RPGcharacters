@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RPGchar.Heroes;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 
@@ -43,7 +44,8 @@ namespace RPGchar
                 Console.WriteLine("2. Exit");
                 UserInput = Console.ReadLine();
 
-                Hero hero = game.NewHero(UserInput);
+                Hero hero = Game.NewHero(UserInput);
+                hero.ShowActualStats();
 
                 Console.WriteLine("what is my name, how it was?");
                 UserInput = Console.ReadLine();
