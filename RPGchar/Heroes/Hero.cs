@@ -97,17 +97,14 @@ namespace RPGchar.Heroes
 
         public Dictionary<Slot, Item> Equipment { get; set; } = new Dictionary<Slot, Item>();
 
-        public void ShowActualStats()
+        public void ShowCurrentAttributesStats(PrimaryAttributes attributes)
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("Your current atributes are:");
-            sb.AppendLine($"Strength: {TotalPrimaryAttributes.Strength}");
-            sb.AppendLine($"Dexterity: {TotalPrimaryAttributes.Dexterity}");
-            sb.AppendLine($"Intelligence: {TotalPrimaryAttributes.Intelligence}");
-            sb.AppendLine($"Vitality: {TotalPrimaryAttributes.Vitality}");
-            //sb.AppendLine($"Strength: {SecondaryAttributes.Health}");
-            //sb.AppendLine($"Strength: {SecondaryAttributes.ArmourRating}");
-            //sb.AppendLine($"Strength: {SecondaryAttributes.ElementalResistance}");
+            sb.AppendLine($"Strength: {attributes.Strength}");
+            sb.AppendLine($"Dexterity: {attributes.Dexterity}");
+            sb.AppendLine($"Intelligence: {attributes.Intelligence}");
+            sb.AppendLine($"Vitality: {attributes.Vitality}");
             Console.WriteLine(sb.ToString());
         }
         public abstract List<WeaponType> WeaponHandlingSkills();

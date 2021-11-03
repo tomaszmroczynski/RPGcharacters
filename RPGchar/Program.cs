@@ -1,4 +1,5 @@
 ﻿using RPGchar.Heroes;
+using RPGchar.Heroes.HeroeClasses;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -43,9 +44,20 @@ namespace RPGchar
                 Console.WriteLine("1. remind your identity");
                 Console.WriteLine("2. Exit");
                 UserInput = Console.ReadLine();
+                Hero hero;
+                if(UserInput == "1")
+                {
+                    hero = new Mage();
+                }
+                else
+                {
+                    hero = new Warrior();
+                }
 
-                Hero hero = Game.NewHero(UserInput);
-                hero.ShowActualStats();
+                //var hero = game.NewHero(UserInput);
+                
+                hero.ShowCurrentAttributesStats(hero.);
+                string s = "";
 
                 Console.WriteLine("what is my name, how it was?");
                 UserInput = Console.ReadLine();

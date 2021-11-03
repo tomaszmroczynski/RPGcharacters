@@ -24,7 +24,7 @@ namespace RPGchar.Heroes.HeroeClasses
             return new List<ArmourType>() { ArmourType.Cloth };
         }
 
-        //private  PrimaryAttributes currentAttributes = new PrimaryAttributes { Strength = 1, Intelligence = 8, Dexterity = 1, Vitality = 5 };
+       
         private PrimaryAttributes currentAttributes = new PrimaryAttributes { Strength = 1, Intelligence = 8, Dexterity = 1, Vitality = 5 };
         public readonly PrimaryAttributes gainedAttributes = new PrimaryAttributes { Strength = 1, Intelligence = 5, Dexterity = 1, Vitality = 3 };
 
