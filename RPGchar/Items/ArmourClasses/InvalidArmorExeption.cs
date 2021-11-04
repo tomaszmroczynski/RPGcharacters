@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RPGchar.Items.Armour
+namespace RPGchar.Items.ArmourClasses
 {
-    public class InvalidArmourExeption : Exception
+    public class InvalidArmourException : Exception
     {
-        public InvalidArmourExeption(string message) : base(message)
+        public InvalidArmourException(string message) : base(message)
         {
             
         }

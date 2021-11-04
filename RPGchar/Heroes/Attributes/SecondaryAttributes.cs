@@ -8,19 +8,13 @@ namespace RPGchar.Heroes.Attributes
 {
     public struct SecondaryAttributes
     {
-        public int Health { get; set; }  
+        public int Health { get; set; }
         public int ArmourRating { get; set; }
 
         public int ElementalResistance { get; set; }
 
-        public static SecondaryAttributes operator +(SecondaryAttributes lhs, PrimaryAttributes rhs)
-        {
-            return new SecondaryAttributes
-            {
-                Health =   rhs.Vitality * 10,
-                ArmourRating =  rhs.Strength  + rhs.Dexterity,
-                ElementalResistance =   rhs.Intelligence,
-            };
-        }
+
+
+
     }
 }

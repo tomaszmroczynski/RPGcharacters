@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RPGchar.Items.Weapon
+namespace RPGchar.Items.WeaponClasses
 {
     public enum WeaponType
     {
@@ -15,6 +15,5 @@ namespace RPGchar.Items.Weapon
         Staff,
         Sword,
         Wand,
-
     }
 }

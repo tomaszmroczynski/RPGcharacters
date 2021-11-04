@@ -14,7 +14,5 @@ namespace RPGchar.Items
 
         public Slot Slot { get; set; }
 
-        
-
     }
 }

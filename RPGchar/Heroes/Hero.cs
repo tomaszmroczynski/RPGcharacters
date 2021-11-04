@@ -1,8 +1,10 @@
 ﻿using RPGchar.Heroes.Attributes;
 using RPGchar.Interfaces;
 using RPGchar.Items;
-using RPGchar.Items.Armour;
-using RPGchar.Items.Weapon;
+
+using RPGchar.Items.ArmourClasses;
+
+using RPGchar.Items.WeaponClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,16 +14,31 @@ using System.Threading.Tasks;
 namespace RPGchar.Heroes
 {
     public abstract class Hero : IItemHandlingSkills
-
     {
+
 
         public string Name { get; init; }
 
-        public int Level { get; set; } = 1;
+        private int level = 1;
+
+        public int Level
+        {
+            get { return level; }
+            set
+            {
+                level = value < 1 ? throw new ArgumentException("Invalid character level !!!") : value;
+                //if (level == 1)
+                //    level = value;
+                //else if (level < 1)
+                //    throw new ArgumentException("Invalid character level !!!");
+
+            }
+        }
+
 
         public CharClasses HeroClass { get; init; }
 
-        public PrimaryAttributes BasePrimaryAttributes { get;  set; } /// where is it
+        public PrimaryAttributes BasePrimaryAttributes { get => GetCurrentAttributes(); } /// where is it
 
         public PrimaryAttributes TotalPrimaryAttributes
         {
@@ -49,11 +66,19 @@ namespace RPGchar.Heroes
 
         public SecondaryAttributes SecondaryAttributes
         {
-            get 
-            {
-                return SecondaryAttributes + TotalPrimaryAttributes;
-            }
+            get { return GetSecondaryAttributes(); }
         }
+
+        public SecondaryAttributes GetSecondaryAttributes()
+        {
+            SecondaryAttributes attr = new SecondaryAttributes();
+            attr.ArmourRating = TotalPrimaryAttributes.Dexterity + TotalPrimaryAttributes.Strength;
+            attr.Health = TotalPrimaryAttributes.Vitality * 10;
+            attr.ElementalResistance = TotalPrimaryAttributes.Intelligence;
+            return attr;
+        }
+
+
 
         public virtual double CharacterDPS 
 
@@ -91,7 +116,7 @@ namespace RPGchar.Heroes
                 var attributes = allWeapons.Select(x => x.WeaponAttributes).ToList();
                 double dps = attributes.Select(x => x.DPS).Sum();
                 double value = baseAttackAttribute / 100.0;
-                return dps * (1 + value);
+                return dps ==0?(1 + value): dps * (1 + value);
             }
         }
 
@@ -109,37 +134,46 @@ namespace RPGchar.Heroes
         }
         public abstract List<WeaponType> WeaponHandlingSkills();
 
+        /// <summary>
+        /// Equips a hero in selected weapon
+        /// </summary>
+        /// <param name="weapon">Weapon to equip (An object of Weapon Class)</param>
         public virtual void EquipWeapon(Weapon weapon) 
         {
             if (!WeaponHandlingSkills().Contains(weapon.Type))
             {
-                throw new InvalidWeaponException($"Wrong wepon slot");
+                throw new InvalidWeaponException($"Invalid weapon type for your class");
             }
             else if (weapon.RequiredLevel > Level)
             {
-                throw new InvalidWeaponException($"Too high weapon level");
+                throw new InvalidWeaponException($"Weapon level too high!");
             }
             else
             {
                 Equipment.Add(Slot.Weapon, weapon);
-                Console.WriteLine($"What great {weapon.Type} u have equiped ");
+                Console.WriteLine("New weapon equiped!");
             }
         }
 
         public abstract List<ArmourType> ArmourWearingSkills();
 
+        /// <summary>
+        /// Equips hero in selected armour
+        /// </summary>
+        /// <param name="armour">An armour to be equipped </param>
+        /// <param name="slot">A slot for selected armour </param>
         public virtual void EquipArmour(Armour armour, Slot slot) {
             {
                 if (!ArmourWearingSkills().Contains(armour.Type))
-                    throw new InvalidArmourExeption("wrong armor type for your hero class");
+                    throw new InvalidArmourException("Invalid armor type for your hero class");
                 else if (armour.RequiredLevel > Level)
-                    throw new InvalidArmourExeption("too low character level");
+                    throw new InvalidArmourException("Armour level too high!");
                 else if (slot == Slot.Weapon)
                     throw new InvalidItemException("wrong item slot");
                 else
                 {
                     Equipment.Add(slot, armour);
-                    Console.WriteLine($"What great {armour.Type} u have equiped ");
+                    Console.WriteLine("New armour equiped!");
                 }
             }
         }
@@ -170,7 +204,7 @@ namespace RPGchar.Heroes
 
         public List<Item> BackPack { get; set; } = new List<Item>();
 
-       
+        public abstract PrimaryAttributes GetCurrentAttributes();
 
        
 

@@ -7,13 +7,10 @@ using System.Threading.Tasks;
 namespace RPGchar.Items
 {
     public enum  Slot
-
-
     {
         Head,
         Body,
         Legs,
         Weapon,
-
     }
 }

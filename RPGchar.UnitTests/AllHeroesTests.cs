@@ -7,8 +7,6 @@ using RPGchar;
 using RPGchar.Heroes.Attributes;
 using RPGchar.Interfaces;
 using RPGchar.Items;
-using RPGchar.Items.Armour;
-using RPGchar.Items.Weapon;
 using RPGchar.Heroes.HeroeClasses;
 using Xunit;
 using RPGchar.Heroes;
@@ -114,6 +112,92 @@ namespace RPGchar.UnitTests
             //Assert
             Assert.Equal(2, result);
 
+        }
+        [Fact]
+        public void Rogue_WhenLeveledUp_CheckDefaultAttributes()
+        {
+            //Arrange
+            var hero = new Rogue();
+
+            //Act
+            hero.LevelUp();
+            var strength = hero.CurrentAttributes.Strength;
+            var inteligence = hero.CurrentAttributes.Intelligence;
+            var dexterity = hero.CurrentAttributes.Dexterity;
+            var vitality = hero.CurrentAttributes.Vitality;
+            
+            
+
+            //Assert
+            Assert.Equal(3, strength);
+            Assert.Equal(2, inteligence);
+            Assert.Equal(10, dexterity);
+            Assert.Equal(11, vitality);
+        }
+
+        [Fact]
+        public void Ranger_WhenLeveledUp_CheckDefaultAttributes()
+        {
+            //Arrange
+            var hero = new Ranger();
+
+            //Act
+            hero.LevelUp();
+            var strength = hero.CurrentAttributes.Strength;
+            var inteligence = hero.CurrentAttributes.Intelligence;
+            var dexterity = hero.CurrentAttributes.Dexterity;
+            var vitality = hero.CurrentAttributes.Vitality;
+            
+
+
+            //Assert
+            Assert.Equal(2, strength);
+            Assert.Equal(2, inteligence);
+            Assert.Equal(12, dexterity);
+            Assert.Equal(10, vitality);
+
+        }
+
+        [Fact]
+        public void Warrior_WhenLeveledUp_CheckDefaultAttributes()
+        {
+            //Arrange
+            var hero = new Warrior();
+
+            //Act
+            hero.LevelUp();
+            var strength = hero.CurrentAttributes.Strength;
+            var inteligence = hero.CurrentAttributes.Intelligence;
+            var dexterity = hero.CurrentAttributes.Dexterity;
+            var vitality = hero.CurrentAttributes.Vitality;
+            
+
+
+            //Assert
+            Assert.Equal(8, strength);
+            Assert.Equal(2, inteligence);
+            Assert.Equal(4, dexterity);
+            Assert.Equal(15, vitality);
+
+        }
+        [Fact]
+        public void Mage_WhenLeveledUp_CheckDefaultAttributes()
+        {
+            //Arrange
+            var hero = new Mage();
+
+            //Act
+            hero.LevelUp();
+            var strength = hero.CurrentAttributes.Strength;
+            var inteligence = hero.CurrentAttributes.Intelligence;
+            var dexterity = hero.CurrentAttributes.Dexterity;
+            var vitality = hero.CurrentAttributes.Vitality;
+
+            //Assert
+            Assert.Equal(2, strength);
+            Assert.Equal(13, inteligence);
+            Assert.Equal(2, dexterity);
+            Assert.Equal(8, vitality);
         }
     }
 }

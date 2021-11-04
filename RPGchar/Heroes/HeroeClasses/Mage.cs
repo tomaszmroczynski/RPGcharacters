@@ -1,6 +1,6 @@
 ﻿using RPGchar.Heroes.Attributes;
-using RPGchar.Items.Armour;
-using RPGchar.Items.Weapon;
+using RPGchar.Items.ArmourClasses;
+using RPGchar.Items.WeaponClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace RPGchar.Heroes.HeroeClasses
 {
+    /// <summary>
+    /// A class that represents one of the existing type of heroes
+    /// </summary>
     public class Mage : Hero
     {
         public Mage()
@@ -28,7 +31,15 @@ namespace RPGchar.Heroes.HeroeClasses
         private PrimaryAttributes currentAttributes = new PrimaryAttributes { Strength = 1, Intelligence = 8, Dexterity = 1, Vitality = 5 };
         public readonly PrimaryAttributes gainedAttributes = new PrimaryAttributes { Strength = 1, Intelligence = 5, Dexterity = 1, Vitality = 3 };
 
-        public PrimaryAttributes CurrentAttributes { get => currentAttributes; }
+        
+
+        public PrimaryAttributes CurrentAttributes
+        {
+            get { return currentAttributes; }
+            set { currentAttributes = value; }
+        }
+
+        
 
 
 
@@ -43,8 +54,10 @@ namespace RPGchar.Heroes.HeroeClasses
 
         public override void LevelUp()
         {
-            currentAttributes = currentAttributes + gainedAttributes;
             Level++;
+            currentAttributes = currentAttributes + gainedAttributes;
+
+
 
         }
 
@@ -61,6 +74,9 @@ namespace RPGchar.Heroes.HeroeClasses
             
         }
 
-
+        public override PrimaryAttributes GetCurrentAttributes()
+        {
+            return CurrentAttributes;
+        }
     }
 }

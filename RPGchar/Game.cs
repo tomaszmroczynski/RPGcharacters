@@ -2,8 +2,10 @@
 using RPGchar.Heroes.Attributes;
 using RPGchar.Heroes.HeroeClasses;
 using RPGchar.Items;
-using RPGchar.Items.Armour;
-using RPGchar.Items.Weapon;
+
+using RPGchar.Items.ArmourClasses;
+
+using RPGchar.Items.WeaponClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +20,6 @@ namespace RPGchar
  
         public void StartGame(string input)
         {
-
             if (input.Equals("yes", StringComparison.InvariantCultureIgnoreCase) || input == "1")
             {
                 Console.WriteLine("Oh my head.....aahh, you open your eyes");
@@ -30,8 +31,6 @@ namespace RPGchar
                 input = "exit";
             }
         }
-
-
 
         public Hero NewHero(string input)
         {
@@ -48,41 +47,39 @@ namespace RPGchar
             return input == "1" ? new Mage() : input == "2" ? new Warrior() : input == "3" ? new Rogue() : input == "4" ? new Ranger() : default; 
         }
 
-        
-
         public List<Item> InventoryChest
         {
             get
             {
                 InventoryChest.Add(new Weapon()
                 {
-                    Name = "Common axe",
-                    RequiredLevel = 1,
+                    Name = "Doombringer",
+                    RequiredLevel = 2,
                     Slot = Slot.Weapon,
-                    Type = WeaponType.Axe,
+                    Type = WeaponType.Sword,
                     WeaponAttributes = new WeaponAttributes() { Damage = 7, AttackSpeed = 1.1 }
                 });
                 InventoryChest.Add(new Weapon()
                 {
-                    Name = "Common bow",
-                    RequiredLevel = 1,
+                    Name = "King Sword of Haste",
+                    RequiredLevel = 3,
                     Slot = Slot.Weapon,
-                    Type = WeaponType.Bow,
-                    WeaponAttributes = new WeaponAttributes() { Damage = 12, AttackSpeed = 0.8 }
+                    Type = WeaponType.Axe,
+                    WeaponAttributes = new WeaponAttributes() { Damage = 12, AttackSpeed = 2 }
                 });
                 InventoryChest.Add(new Armour()
                 {
-                    Name = "Common plate body Armour",
-                    RequiredLevel = 1,
+                    Name = "Gothic Plate",
+                    RequiredLevel = 2,
                     Slot = Slot.Body,
                     Type = ArmourType.Plate,
-                    ArmourAttributes = new PrimaryAttributes() { Vitality = 2, Strength = 1 }
+                    ArmourAttributes = new PrimaryAttributes() { Vitality = 10, Strength = 3 }
                 });
                 InventoryChest.Add(new Armour()
                 {
-                    Name = "Common cloth head armor",
+                    Name = "Leather Robe",
                     RequiredLevel = 1,
-                    Slot = Slot.Head,
+                    Slot = Slot.Body,
                     Type = ArmourType.Cloth,
                     ArmourAttributes = new PrimaryAttributes() { Vitality = 1, Intelligence = 5 }
                 });

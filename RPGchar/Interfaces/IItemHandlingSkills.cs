@@ -1,5 +1,6 @@
-﻿using RPGchar.Items.Armour;
-using RPGchar.Items.Weapon;
+﻿
+using RPGchar.Items.ArmourClasses;
+using RPGchar.Items.WeaponClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;

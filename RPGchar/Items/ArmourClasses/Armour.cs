@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RPGchar.Items.Armour
+namespace RPGchar.Items.ArmourClasses
 {
     public class Armour : Item
     {

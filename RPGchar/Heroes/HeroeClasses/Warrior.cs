@@ -1,6 +1,6 @@
 ﻿using RPGchar.Heroes.Attributes;
-using RPGchar.Items.Armour;
-using RPGchar.Items.Weapon;
+using RPGchar.Items.ArmourClasses;
+using RPGchar.Items.WeaponClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +13,9 @@ namespace RPGchar.Heroes.HeroeClasses
    {
         public Warrior()
         {
+          
             HeroClass = CharClasses.Warrior;
+           
 
         }
         public override List<WeaponType> WeaponHandlingSkills()
@@ -29,7 +31,11 @@ namespace RPGchar.Heroes.HeroeClasses
         private PrimaryAttributes currentAttributes = new PrimaryAttributes { Strength = 5, Intelligence = 1, Dexterity = 2, Vitality = 10 };
         private readonly PrimaryAttributes gainedAttributes = new PrimaryAttributes { Strength = 3, Intelligence = 1, Dexterity = 2, Vitality = 5 };
 
-        public PrimaryAttributes CurrentAttributes { get => currentAttributes; }
+        public PrimaryAttributes CurrentAttributes
+        {
+            get { return currentAttributes; }
+            set { currentAttributes = value; }
+        }
 
         public override  double CharacterDPS
         {
@@ -41,13 +47,10 @@ namespace RPGchar.Heroes.HeroeClasses
 
         public override void LevelUp()
         {
+            Level++;
             currentAttributes = currentAttributes + gainedAttributes;
-            Console.WriteLine($"Congratulations {Name} You have leveled up, and your actual level is {Level} ");
-            Console.WriteLine("Your updated atributes are:");
-            Console.WriteLine($"Strength {currentAttributes.Strength}");
-            Console.WriteLine($"Dexterity {currentAttributes.Dexterity}");
-            Console.WriteLine($"Intelligence {currentAttributes.Intelligence}");
-            Console.WriteLine($"Vitality {currentAttributes.Vitality}");
+
+
         }
 
 
@@ -57,6 +60,10 @@ namespace RPGchar.Heroes.HeroeClasses
             throw new NotImplementedException();
         }
 
+        public override PrimaryAttributes GetCurrentAttributes()
+        {
+            return CurrentAttributes;
+        }
 
 
     }

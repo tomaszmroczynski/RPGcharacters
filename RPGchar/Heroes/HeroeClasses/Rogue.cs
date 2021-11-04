@@ -1,6 +1,6 @@
 ﻿using RPGchar.Heroes.Attributes;
-using RPGchar.Items.Armour;
-using RPGchar.Items.Weapon;
+using RPGchar.Items.ArmourClasses;
+using RPGchar.Items.WeaponClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ namespace RPGchar.Heroes.HeroeClasses
         public Rogue()
         {
             HeroClass = CharClasses.Rogue;
-            currentAttributes = new PrimaryAttributes { Strength = 2, Intelligence = 1, Dexterity = 6, Vitality = 8 };
+           
         }
         public override List<WeaponType> WeaponHandlingSkills()
         {
@@ -30,12 +30,18 @@ namespace RPGchar.Heroes.HeroeClasses
         
         private readonly PrimaryAttributes gainedAttributes = new PrimaryAttributes { Strength = 1, Intelligence = 1, Dexterity = 4, Vitality = 3 };
 
-        public PrimaryAttributes CurrentAttributes { get => currentAttributes; }
-
-        public override void LevelUp()
+        public PrimaryAttributes CurrentAttributes
         {
+            get { return currentAttributes; }
+            set { currentAttributes = value; }
+        }
+    
+
+    public override void LevelUp()
+        {
+            Level++;
             currentAttributes = currentAttributes + gainedAttributes;
-            Console.WriteLine($"Congratulations {Name} You have leveled up, and your actual level is {Level} ");
+
 
         }
 
@@ -54,6 +60,10 @@ namespace RPGchar.Heroes.HeroeClasses
             throw new NotImplementedException();
         }
 
+        public override PrimaryAttributes GetCurrentAttributes()
+        {
+            return CurrentAttributes;
+        }
 
     }
 }
