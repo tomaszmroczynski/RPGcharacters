@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace RPGchar.Items
 {
+    /// <summary>
+    /// An enum containg possible equipment slots
+    /// </summary>
     public enum  Slot
     {
         Head,

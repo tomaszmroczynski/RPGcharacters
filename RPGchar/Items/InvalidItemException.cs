@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace RPGchar.Items
 {
+	/// <summary>
+	/// A class used whenever item is invalid
+	/// </summary>
 	public class InvalidItemException : Exception
 	{
 		public InvalidItemException(string message) : base(message){}

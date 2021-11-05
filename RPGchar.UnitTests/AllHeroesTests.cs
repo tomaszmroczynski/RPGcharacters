@@ -13,6 +13,9 @@ using RPGchar.Heroes;
 
 namespace RPGchar.UnitTests
 {
+    /// <summary>
+    /// A class that represents tests of all possible hero classes
+    /// </summary>
     public class AllHeroesTests
     {
         [Fact]

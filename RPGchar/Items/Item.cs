@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace RPGchar.Items
 {
+    /// <summary>
+    /// An abstract class that holds shared weapon/armour prosperities
+    /// </summary>
     public abstract class Item
     {
         public string Name { get; set; }

@@ -18,31 +18,39 @@ namespace RPGchar.Heroes.HeroeClasses
         {
             HeroClass = CharClasses.Mage;
         }
+
+        /// <summary>
+        /// A method that stores weapon types which hero class is able to use
+        /// </summary>
+        /// <returns>Weapon types</returns>
         public override List<WeaponType> WeaponHandlingSkills() 
         {
             return new List<WeaponType>() { WeaponType.Staff, WeaponType.Wand }; 
         }
+
+        /// <summary>
+        /// A method that stores armour types which hero class is able to use
+        /// </summary>
+        /// <returns>Armur types</returns>
         public override List<ArmourType> ArmourWearingSkills() 
         { 
             return new List<ArmourType>() { ArmourType.Cloth };
         }
 
-       
+        /// <summary>
+        /// A field containg attributes when hero is created
+        /// </summary>
         private PrimaryAttributes currentAttributes = new PrimaryAttributes { Strength = 1, Intelligence = 8, Dexterity = 1, Vitality = 5 };
+        /// <summary>
+        /// A field containg attributes that hero gains when levels up
+        /// </summary>
         public readonly PrimaryAttributes gainedAttributes = new PrimaryAttributes { Strength = 1, Intelligence = 5, Dexterity = 1, Vitality = 3 };
-
-        
 
         public PrimaryAttributes CurrentAttributes
         {
             get { return currentAttributes; }
             set { currentAttributes = value; }
         }
-
-        
-
-
-
 
         public override double CharacterDPS
         {
@@ -56,22 +64,6 @@ namespace RPGchar.Heroes.HeroeClasses
         {
             Level++;
             currentAttributes = currentAttributes + gainedAttributes;
-
-
-
-        }
-
-
-
-
-        public override void SearchChest()
-        {
-            
-            
-
-
-
-            
         }
 
         public override PrimaryAttributes GetCurrentAttributes()

@@ -15,6 +15,9 @@ using Xunit.Abstractions;
 
 namespace RPGchar.UnitTests
 {
+    /// <summary>
+    /// A class for testing signle hero functionality shared with rest of possible classes 
+    /// </summary>
     public class SingleHeroTests
     {
         private readonly ITestOutputHelper output;

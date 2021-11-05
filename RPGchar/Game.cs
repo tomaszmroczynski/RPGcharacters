@@ -2,9 +2,7 @@
 using RPGchar.Heroes.Attributes;
 using RPGchar.Heroes.HeroeClasses;
 using RPGchar.Items;
-
 using RPGchar.Items.ArmourClasses;
-
 using RPGchar.Items.WeaponClasses;
 using System;
 using System.Collections.Generic;
@@ -17,7 +15,10 @@ namespace RPGchar
 {
     public class Game
     {
- 
+        /// <summary>
+        /// A method prepared for furtre game development that starts or ends game
+        /// </summary>
+        /// <param name="input">User choice</param>
         public void StartGame(string input)
         {
             if (input.Equals("yes", StringComparison.InvariantCultureIgnoreCase) || input == "1")
@@ -28,25 +29,16 @@ namespace RPGchar
             else if (input.Equals("no", StringComparison.InvariantCultureIgnoreCase) || input == "2")
             {
                 Console.WriteLine("bye, bye");
+                Thread.Sleep(1000);
                 input = "exit";
             }
         }
 
-        public Hero NewHero(string input)
-        {
-            var values = Enum.GetValues(typeof(CharClasses));
-            int idx = 0;
-            foreach (var item in values)
-            {
-                idx++;               
-                Console.WriteLine($"{idx} {item}");
-                Thread.Sleep(1000);
-            }
-            input = Console.ReadLine();
-     
-            return input == "1" ? new Mage() : input == "2" ? new Warrior() : input == "3" ? new Rogue() : input == "4" ? new Ranger() : default; 
-        }
 
+
+        /// <summary>
+        /// Object that stores heroes found equipment made for future fun
+        /// </summary>
         public List<Item> InventoryChest
         {
             get

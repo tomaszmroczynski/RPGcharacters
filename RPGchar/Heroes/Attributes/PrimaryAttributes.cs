@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace RPGchar.Heroes.Attributes
 {
+    /// <summary>
+    /// A custom type representing heroes atributes
+    /// </summary>
     public struct PrimaryAttributes 
     {
         public int Strength { get; set; }
@@ -15,6 +18,12 @@ namespace RPGchar.Heroes.Attributes
 
         public int Vitality { get; set; }
 
+        /// <summary>
+        /// A static method with overloaded opertor + for addtion two instances of PrimaryAttributes
+        /// </summary>
+        /// <param name="lhs">left hand side PrimaryAttributes instance</param>
+        /// <param name="rhs">right hand side PrimaryAttributes instance</param>
+        /// <returns></returns>
         public static PrimaryAttributes operator +(PrimaryAttributes lhs, PrimaryAttributes rhs)
         {
             return new PrimaryAttributes

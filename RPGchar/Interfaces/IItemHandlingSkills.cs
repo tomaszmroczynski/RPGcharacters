@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace RPGchar.Interfaces
 {
+    /// <summary>
+    /// An interface for implementation of itemhandling skills methods
+    /// </summary>
     interface IItemHandlingSkills
     {
         List<WeaponType> WeaponHandlingSkills();

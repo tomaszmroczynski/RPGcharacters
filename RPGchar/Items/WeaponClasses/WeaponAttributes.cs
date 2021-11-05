@@ -5,7 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace RPGchar.Items.WeaponClasses
-{
+{ 
+    /// <summary>
+    /// A class that holds weapon attributes
+    /// </summary>
     public class WeaponAttributes
     {
         public double Damage { get; set; }

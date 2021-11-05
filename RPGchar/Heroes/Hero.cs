@@ -1,9 +1,7 @@
 ﻿using RPGchar.Heroes.Attributes;
 using RPGchar.Interfaces;
 using RPGchar.Items;
-
 using RPGchar.Items.ArmourClasses;
-
 using RPGchar.Items.WeaponClasses;
 using System;
 using System.Collections.Generic;
@@ -13,9 +11,11 @@ using System.Threading.Tasks;
 
 namespace RPGchar.Heroes
 {
+    /// <summary>
+    /// An abstract class holding shared methods, props , fields for child hero classes
+    /// </summary>
     public abstract class Hero : IItemHandlingSkills
     {
-
 
         public string Name { get; init; }
 
@@ -27,19 +27,16 @@ namespace RPGchar.Heroes
             set
             {
                 level = value < 1 ? throw new ArgumentException("Invalid character level !!!") : value;
-                //if (level == 1)
-                //    level = value;
-                //else if (level < 1)
-                //    throw new ArgumentException("Invalid character level !!!");
-
             }
         }
 
-
         public CharClasses HeroClass { get; init; }
 
-        public PrimaryAttributes BasePrimaryAttributes { get => GetCurrentAttributes(); } /// where is it
+        public PrimaryAttributes BasePrimaryAttributes { get => GetCurrentAttributes(); }
 
+        /// <summary>
+        /// Calculation of TotalPrimaryAttributes from base attributes and all equipmet influence
+        /// </summary>
         public PrimaryAttributes TotalPrimaryAttributes
         {
             get
@@ -63,12 +60,16 @@ namespace RPGchar.Heroes
                 return BasePrimaryAttributes + total;
             }
         }
-
+       
         public SecondaryAttributes SecondaryAttributes
         {
             get { return GetSecondaryAttributes(); }
         }
 
+        /// <summary>
+        /// Method that calculate secondary attributes 
+        /// </summary>
+        /// <returns>Returns updated struct SecoundaryAttributes</returns>
         public SecondaryAttributes GetSecondaryAttributes()
         {
             SecondaryAttributes attr = new SecondaryAttributes();
@@ -77,9 +78,9 @@ namespace RPGchar.Heroes
             attr.ElementalResistance = TotalPrimaryAttributes.Intelligence;
             return attr;
         }
-
-
-
+        /// <summary>
+        /// Caculation of hero damage per second 
+        /// </summary>
         public virtual double CharacterDPS 
 
            {
@@ -119,9 +120,15 @@ namespace RPGchar.Heroes
                 return dps ==0?(1 + value): dps * (1 + value);
             }
         }
-
+        /// <summary>
+        /// A prosperity for equiping weapons and armour.
+        /// </summary>
         public Dictionary<Slot, Item> Equipment { get; set; } = new Dictionary<Slot, Item>();
 
+        /// <summary>
+        /// A method that shows actual hero PrimaryAtributes
+        /// </summary>
+        /// <param name="attributes">Can be base attributes or total</param>
         public void ShowCurrentAttributesStats(PrimaryAttributes attributes)
         {
             StringBuilder sb = new StringBuilder();
@@ -130,6 +137,20 @@ namespace RPGchar.Heroes
             sb.AppendLine($"Dexterity: {attributes.Dexterity}");
             sb.AppendLine($"Intelligence: {attributes.Intelligence}");
             sb.AppendLine($"Vitality: {attributes.Vitality}");
+            Console.WriteLine(sb.ToString());
+        }
+
+        /// <summary>
+        /// A method that shows actual hero Secondary Attributes
+        /// </summary>
+        /// <param name="attributes">Actual Secondary Attributes</param>
+        public void ShowCurrentAttributesStats(SecondaryAttributes attributes)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Your current atributes are:");
+            sb.AppendLine($"Strength: {attributes.Health}");
+            sb.AppendLine($"Dexterity: {attributes.ArmourRating}");
+            sb.AppendLine($"Intelligence: {attributes.ElementalResistance}");
             Console.WriteLine(sb.ToString());
         }
         public abstract List<WeaponType> WeaponHandlingSkills();
@@ -177,18 +198,25 @@ namespace RPGchar.Heroes
                 }
             }
         }
-
+        /// <summary>
+        /// A method that levels up hero and updates current attributes 
+        /// </summary>
         public abstract void LevelUp();
-     
 
-        public abstract void SearchChest();
 
+        /// <summary>
+        /// A method that allows hero to pickup found equipment and place it in backpack for planned  future game development. 
+        /// </summary>
+        /// <param name="items">Found weapon or armour</param>
         public void PickUpItems(List<Item> items)
         {
             BackPack.AddRange(items);
             Console.WriteLine("you pickpup some interesting equipment");  
         }
-
+        /// <summary>
+        /// A method that that show inventory stored in backpack or other container for planned  future game development. 
+        /// </summary>
+        /// <param name="backpack">Backapack or other container storring pickuped weapons and armour</param>
         public void ShowBackPack(List<Item> backpack)
         {
             StringBuilder itemList = new StringBuilder();
@@ -204,10 +232,17 @@ namespace RPGchar.Heroes
 
         public List<Item> BackPack { get; set; } = new List<Item>();
 
+        /// <summary>
+        /// A method that gets summarised actual attribtes
+        /// </summary>
+        /// <returns>CurrentAttributes</returns>
         public abstract PrimaryAttributes GetCurrentAttributes();
 
        
-
+        /// <summary>
+        /// A method for planned  future game development that allow user to give hero name on innit.
+        /// </summary>
+        /// <param name="input">User choice of hero name </param>
         public void RemindName(string input)
         {
             
